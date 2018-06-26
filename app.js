@@ -35,19 +35,23 @@ let CUSTOMER_LOADING = "/customer/check/";
 // };
 
 function customResolver1(host, url,req) {
+  console.log('=============');
+  console.log('CUSTOM RESOLVER');
+  console.log('=============');
   let ar = url.split("/");
   let path = host.split(".")[0];
   let action = ar[1];
 
-
-  // console.log(ar);
+  let port = ar[2];
+  let client = ar[3];
   if(action === "activate"){
-    let port = ar[2];
-    let client = ar[3];
-    console.log('REGISTERED');
+    console.log('ACTIVATE');
     proxy.register("http://"+client+".localhost:8080", "http://localhost:"+port);
     return {"response" : "true"}
-  } else if(url === "/deactivate"){
+  } else if(action === "deactivate"){
+    console.log('DEACTIVATE');
+    proxy.unregister("http://"+client+".localhost:8080", "http://localhost:"+port);
+    return {"response" : "true"}
   } else {
     return erp_manager_url+CUSTOMER_LOADING+path
 
@@ -70,13 +74,13 @@ global.proxy.notFound(function (req, res) {
 // let app = express();
 // router(app);
 
-proxy.register("http://gateway.localhost:8080", "http://localhost:8282");
+// proxy.register("http://gateway.localhost:8080", "http://localhost:8282");
 
 proxy.register("http://erp.localhost:8080", "http://localhost:8181");
 
-proxy.register("http://jose.localhost:8080", "http://localhost:8181/client/apple");
+// proxy.register("http://jose.localhost:8080", "http://localhost:8181/client/apple");
 
-proxy.register("http://g1.localhost:8080", "http://g1.com.br");
+// proxy.register("http://g1.localhost:8080", "http://g1.com.br");
 
 
 
