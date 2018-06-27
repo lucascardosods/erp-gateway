@@ -1,12 +1,12 @@
 {
-  "name": "base",
+  "name": "erp-gateway",
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "8.0.0"
+    "node": "8.4.0"
   },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.jsw"
   },
   "dependencies": {
     "await": "0.2.6",
