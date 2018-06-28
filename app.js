@@ -29,7 +29,7 @@ function customResolver1(host, url,req) {
 
 
 global.proxy = new require('redbird')({
-  port: 80,
+  port: 8080,
   resolvers: [customResolver1]
 });
 
@@ -42,4 +42,4 @@ global.proxy.notFound(function (req, res) {
 
 // proxy.register("http://gateway.localhost:8080", "http://localhost:8282");
 
-proxy.register("http://erp."+myIP+"", "http://"+myIP+":8181");
+proxy.register("http://erp."+myIP+":8080", "http://"+myIP+":8181");
