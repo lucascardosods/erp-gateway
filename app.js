@@ -1,8 +1,6 @@
-let express = require("express");
-let path = require("path");
-let router = require("./routes/routes_manager");
 
-let erp_manager_url = "http://localhost:8181";
+let myIP = "ec2-34-227-9-205.compute-1.amazonaws.com";
+let erp_manager_url = "http://"+myIP+":8181";
 let IS_RUNNING = "/customer/isrunning/";
 let CUSTOMER_LOADING = "/customer/check/";
 
@@ -46,11 +44,11 @@ function customResolver1(host, url,req) {
   let client = ar[3];
   if(action === "activate"){
     console.log('ACTIVATE');
-    proxy.register("http://"+client+".localhost:8080", "http://localhost:"+port);
+    proxy.register("http://"+client+"."+myIP+"", "http://"+myIP+":"+port);
     return {"response" : "true"}
   } else if(action === "deactivate"){
     console.log('DEACTIVATE');
-    proxy.unregister("http://"+client+".localhost:8080", "http://localhost:"+port);
+    proxy.unregister("http://"+client+"."+myIP+":8080", "http://"+myIP+":"+port);
     return {"response" : "true"}
   } else {
     return erp_manager_url+CUSTOMER_LOADING+path
@@ -76,7 +74,7 @@ global.proxy.notFound(function (req, res) {
 
 // proxy.register("http://gateway.localhost:8080", "http://localhost:8282");
 
-proxy.register("http://erp.localhost:8080", "http://localhost:8181");
+proxy.register("http://erp."+myIP+"", "http://"+myIP+":8181");
 
 // proxy.register("http://jose.localhost:8080", "http://localhost:8181/client/apple");
 
