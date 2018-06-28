@@ -6,7 +6,7 @@
     "node": "8.4.0"
   },
   "scripts": {
-    "start": "node app.jsw"
+    "start": "node app.js"
   },
   "dependencies": {
     "await": "0.2.6",
