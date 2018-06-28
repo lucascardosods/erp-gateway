@@ -42,4 +42,6 @@ global.proxy.notFound(function (req, res) {
 
 // proxy.register("http://gateway.localhost:8080", "http://localhost:8282");
 
+proxy.register("erp."+myIP+":8080", "http://"+myIP+":8181");
+proxy.register("https://erp."+myIP+":8080", "http://"+myIP+":8181");
 proxy.register("http://erp."+myIP+":8080", "http://"+myIP+":8181");
