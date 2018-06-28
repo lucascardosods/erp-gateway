@@ -1,5 +1,5 @@
 
-let myIP = "ec2-34-227-9-205.compute-1.amazonaws.com";
+let myIP = "34.227.9.205";
 let erp_manager_url = "http://"+myIP+":8181";
 let IS_RUNNING = "/customer/isrunning/";
 let CUSTOMER_LOADING = "/customer/check/";
