@@ -1,5 +1,5 @@
 
-let myIP = "ec2-34-227-9-205.compute-1.amazonaws.com";
+let myIP = "hec2-34-227-9-205.compute-1.amazonaws.com";
 let erp_manager_url = "http://"+myIP+":8181";
 let IS_RUNNING = "/customer/isrunning/";
 let CUSTOMER_LOADING = "/customer/check/";
@@ -42,4 +42,4 @@ global.proxy.notFound(function (req, res) {
 
 // proxy.register("http://gateway.localhost:8080", "http://localhost:8282");
 
-proxy.register("http://erp."+myIP+":8080", "http://"+myIP+":8181");
+proxy.register("erp."+myIP+":8080", "http://"+myIP+":8181");
